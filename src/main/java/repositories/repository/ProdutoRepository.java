@@ -112,7 +112,7 @@ public class ProdutoRepository implements ProdutoRepositoryView {
             dados[1] = novaDescricao;
           }
           if (novoValor != null) {
-            dados[2] = String.format("%.2f", novoValor);
+            dados[2] = novoValor.toString();
           }
           if (novaQuantidade != null) {
             dados[3] = String.valueOf(novaQuantidade);

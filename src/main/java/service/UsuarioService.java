@@ -46,12 +46,12 @@ public class UsuarioService {
     repository.salvarUsuario(cpf, nome, telefone, userType, fileName);
   }
 
-  public String bemVindoUsuario(String cpf, String fileName) {
-    return repository.bemVindoUsuario(cpf, fileName);
+  public void bemVindoUsuario(String cpf, String fileName) {
+    repository.bemVindoUsuario(cpf, fileName);
   }
 
   public boolean usuarioExiste(String cpf, String fileName) {
-    if(!valid.isValidCpf(cpf)) throw new BusinessException("O CPF não é válido.");
+//    if(!valid.isValidCpf(cpf)) throw new BusinessException("O CPF não é válido.");
     return repository.usuarioExiste(cpf, fileName);
   }
 

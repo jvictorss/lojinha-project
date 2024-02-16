@@ -322,7 +322,6 @@ public class Menus {
   }
 
   public void menuGerente() {
-    print("=".repeat(50));
     print("""
     Selecione uma opção:\s
     1. Cadastrar Cliente\s
@@ -371,18 +370,19 @@ public class Menus {
     for (ClienteDto cliente : clientes) {
       printf("%-15s | %-20s | %-15s |%n",
           cliente.getCpf(), cliente.getNome(), cliente.getTelefone());
-      println("=".repeat(70));
     }
+    println("=".repeat(70));
   }
   private void recuperarProdutos() {
     List<ProdutoDto> produtos = produtoService.visualizarProdutos();
     printf("%-10s | %-20s | %-18s  | %-12s |%n",
         "CÓDIGO", "DESCRIÇÃO", "VALOR", "QUANTIDADE");
+    println("-".repeat(70));
     for (ProdutoDto produto : produtos) {
       printf("%-10s | %-20s | R$ %-15s  | %-12s |%n",
           produto.getCodigo(), produto.getDescricao(), produto.getValor(), produto.getQuantidade());
-      println("-".repeat(70));
     }
+    println("-".repeat(70));
   }
 
   public void alterarCadastroClientes() {
@@ -421,11 +421,11 @@ public class Menus {
   }
 
   public void cadastrarProduto() {
-    print("Opção 5 selecionada: Cadastrar Produto \n Digite o código do produto: ");
+    print("Opção 5 selecionada: Cadastrar Produto\nDigite o código do produto: ");
     String codigo = scanner.next();
     scanner.nextLine();
     if (produtoService.produtoExiste(codigo, BD_PRODUTOS)) {
-      print("Já existe um produto com este código \n Redirecionando ao menu principal");
+      print("Já existe um produto com este código\nRedirecionando ao menu principal\n");
       menuGerente();
       return;
     }
@@ -440,7 +440,7 @@ public class Menus {
     retornarAoMenu(GERENTE);
   }
   public void visualizarCadastroProdutos() {
-    print("Opção 6 selecionada: visualizar cadastro de produto \n" +
+    print("Opção 6 selecionada: visualizar cadastro de produto\n" +
         "=".repeat(70) + "\n");
     assert produtoService != null;
     recuperarProdutos();
@@ -456,7 +456,7 @@ public class Menus {
     print("Digite a nova descrição: ");
     String novaDescricao = scanner.next();
     print("Digite o novo valor: ");
-    Double novoValor = scanner.nextDouble();
+    double novoValor = scanner.nextInt();
     print("Deseja reassinalar uma quantidade para o produto? S/N: ");
     String response = scanner.next();
     if ("s".equalsIgnoreCase(response)) {

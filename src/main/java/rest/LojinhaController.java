@@ -11,15 +11,12 @@ import main.java.service.UsuarioService;
 import main.java.view.Menus;
 
 public class LojinhaController {
-  private UsuarioService usuarioService;
-  private ProdutoService produtoService;
-  private ComprasService comprasService;
-  private Menus menus;
+  private final Menus menus;
 
   public LojinhaController() {
-    this.usuarioService = new UsuarioService(new FileUtils(), new UserRepository(), new Valid());
-    this.produtoService = new ProdutoService(new FileUtils(), new ProdutoRepository());
-    this.comprasService = new ComprasService(new ComprasRepository(), produtoService, new FileUtils());
+    UsuarioService usuarioService = new UsuarioService(new FileUtils(), new UserRepository(), new Valid());
+    ProdutoService produtoService = new ProdutoService(new FileUtils(), new ProdutoRepository());
+    ComprasService comprasService = new ComprasService(new ComprasRepository(), produtoService, new FileUtils());
     this.menus = new Menus(usuarioService, produtoService, comprasService, new Valid());
   }
 

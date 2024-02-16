@@ -9,7 +9,7 @@ public interface UserRepositoryView {
 
   boolean usuarioExiste(String cpf, String fileName);
 
-  String bemVindoUsuario(String cpf, String fileName);
+  void bemVindoUsuario(String cpf, String fileName);
 
   void visualizarCadastro(String cpf, String fileName);
 

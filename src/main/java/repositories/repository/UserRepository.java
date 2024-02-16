@@ -65,19 +65,18 @@ public class UserRepository implements UserRepositoryView {
   }
 
   @Override
-  public String bemVindoUsuario(String cpf, String fileName){
+  public void bemVindoUsuario(String cpf, String fileName){
     try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
       String linha;
       while ((linha = reader.readLine()) != null) {
         String[] dados = linha.split(",");
         if(dados.length >= 3 && dados[0].equals(cpf)) {
-          return "=".repeat(15) + "\n".concat("Boas-vindas, ".concat(dados[1])).concat("=".repeat(15));
+          print("=".repeat(15).concat(" Boas-vindas, ".concat(dados[1])).concat(" ").concat("=".repeat(15)).concat("\n"));
         }
       }
     } catch (IOException e) {
       print(ERROR_READ_FILE);
     }
-    return null;
   }
 
   @Override
